@@ -1,0 +1,17 @@
+#Mac OSX
+.DS_Store
+
+#Emacs
+*~
+
+#Python
+*.pyc
+lib/*.pyc
+.ipynb_checkpoints
+
+#Output&Resource
+results*
+datasets*
+models*
+nohup.out
+scripts/*
