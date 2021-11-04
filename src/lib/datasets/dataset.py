@@ -103,7 +103,7 @@ class STDataset(Dataset):
         return image
 
     def get_label(self, i):
-        label = self.label_list.index(self.file_list[i][self.file_list[i].find('_')+1:self.file_list[i].find('-')])
+        label = self.label_list.index(self.file_list[i][self.file_list[i].rfind('_')+1:self.file_list[i].rfind('-')])
         return np.array([label])
 
     def __getitem__(self, i):
