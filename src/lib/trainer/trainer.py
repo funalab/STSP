@@ -4,7 +4,8 @@ import time
 import numpy as np
 from sklearn import metrics
 import matplotlib.pyplot as plt
-from sklearn.metrics.classification import balanced_accuracy_score, multilabel_confusion_matrix
+#from sklearn.metrics.classification import balanced_accuracy_score, multilabel_confusion_matrix
+from sklearn.metrics import balanced_accuracy_score, multilabel_confusion_matrix
 
 import torch
 import torch.nn as nn
