@@ -252,6 +252,10 @@ class Tester(object):
                 disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['0', '1'])
                 disp.plot()
                 plt.savefig(os.path.join(self.save_dir, 'figs', 'confusion_matrix_{}.pdf'.format(l)))
+            cms = metrics.confusion_matrix(y_true, y_pred)
+            disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cms, display_labels=[str(i) for i in self.label_list])
+            disp.plot()
+            plt.savefig(os.path.join(self.save_dir, 'figs', 'confusion_matrix_all.pdf'))
 
 
         return metrics_dict
