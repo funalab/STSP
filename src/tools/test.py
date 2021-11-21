@@ -100,6 +100,7 @@ def main(argv=None):
     current_datetime = datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y%m%d_%H%M%S')
     save_dir = args.save_dir + '_' + str(current_datetime)
     os.makedirs(save_dir, exist_ok=True)
+    os.makedirs(os.path.join(save_dir, 'features'), exist_ok=True)
     shutil.copy(args.conf_file, os.path.join(save_dir, os.path.basename(args.conf_file)))
     
     tester_args = {

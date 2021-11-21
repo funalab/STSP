@@ -189,10 +189,18 @@ class Tester(object):
         loss_list = []
 
         # predict
+        cnt = 0
         for batch in data_iter:
             input, label = batch
             with torch.no_grad():
-                prediction = model(input.to(torch.device(self.device)))
+                if phase == 'test':
+                    prediction, feat = model.inference(input.to(torch.device(self.device)))
+                    for f, l in zip(feat.to(torch.device('cpu')).detach(), label.detach()):
+                        np.save(os.path.join(self.save_dir, 'features',
+                                             self.file_list[cnt][:self.file_list[cnt].rfind('.')]), f)
+                        cnt += 1
+                else:
+                    prediction = model(input.to(torch.device(self.device)))
 
             output_list.append(prediction.to(torch.device('cpu')).detach())
             truth_list.append(label.detach())
