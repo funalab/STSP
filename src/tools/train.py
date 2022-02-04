@@ -90,8 +90,10 @@ def main(argv=None):
         classifier = torch.load(args.init_classifier)
 
     # Prepare device
-    classifier = classifier.to(args.device)
-
+    os.environ['CUDA_VISIBLE_DEVICES'] = args.device[-1]
+    device = torch.device('cuda')
+    classifier = classifier.to(device)
+    
     ''' Dataset '''
     # Load dataset
     train_dataset, validation_dataset = get_dataset(args)
@@ -191,7 +193,7 @@ def main(argv=None):
         'epoch' : args.epoch,
         'save_dir' : save_dir,
         'eval_metrics' : args.eval_metrics,
-        'device' : args.device
+        'device' : device
     }
 
     trainer = Trainer(**trainer_args)
