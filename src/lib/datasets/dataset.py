@@ -42,6 +42,7 @@ def zscore_normalize_one_image(image):
 def crop_2d(
         image,
         crop_size=(1024, 1024),
+        crop_range=64,
         augmentation=True
     ):
     """ 2d RGB image patche is cropped from array.
@@ -58,8 +59,12 @@ def crop_2d(
 
     if augmentation:
         # get cropping position (image)
-        top = random.randint(0, x_len-crop_size[1]-1) if x_len > crop_size[1] else 0
-        left = random.randint(0, y_len-crop_size[0]-1) if y_len > crop_size[0] else 0
+        top = random.randint(-crop_range, crop_range) + int((x_len - crop_size[1])/2)
+        left = random.randint(-crop_range, crop_range) + int((y_len - crop_size[0])/2)
+        if top < 0 or top + crop_size[1] > x_len:
+            top = 0
+        if left < 0 or left + crop_size[0] > y_len:
+            left = 0
         bottom = top + crop_size[1]
         right = left + crop_size[0]
         cropped_image = np.array(image[:, left:right, top:bottom])
@@ -98,7 +103,7 @@ class STDataset(Dataset):
 
     def get_image(self, i):
         image = io.imread(os.path.join(self.root, self.basename, self.file_list[i])).transpose(2, 0, 1)
-        image = crop_2d(image, crop_size=self.crop_size, augmentation=self.train)
+        image = crop_2d(image, crop_size=self.crop_size, crop_range=128, augmentation=self.train)
         image = min_max_normalize_one_image(image)
         return image
 
