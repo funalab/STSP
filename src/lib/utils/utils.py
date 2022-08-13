@@ -60,7 +60,8 @@ def get_dataset(args):
         label_list=args.label_list,
         basename=args.basename,
         crop_size=eval(args.crop_size),
-        train=True
+        crop_range=eval(args.crop_range),
+        train=True,
     )
     validation_dataset = STDataset(
         root=args.root_path,
@@ -68,7 +69,8 @@ def get_dataset(args):
         label_list=args.label_list,
         basename=args.basename,
         crop_size=eval(args.crop_size),
-        train=False
+        crop_range=eval(args.crop_range),
+        train=False,
     )
 
     return train_dataset, validation_dataset
@@ -81,7 +83,8 @@ def get_test_dataset(args):
         label_list=args.label_list,
         basename=args.basename,
         crop_size=eval(args.crop_size),
-        train=False
+        crop_range=eval(args.crop_range),
+        train=False,
     )
 
     return test_dataset
