@@ -88,11 +88,21 @@ def crop_2d(
 
 
 class STDataset(Dataset):
-    def __init__(self, root=None, split_list=None, label_list=None, basename='images', crop_size=[1024, 1024], train=True):
+    def __init__(
+            self,
+            root=None,
+            split_list=None,
+            label_list=None,
+            basename='images',
+            crop_size=[1024, 1024],
+            crop_range=128,
+            train=True
+    ):
         self.root = root
         self.basename = basename
         self.train = train
         self.crop_size = crop_size
+        self.crop_range = crop_range
         with open(split_list, 'r') as f:
             self.file_list = [line.rstrip() for line in f]
         with open(label_list, 'r') as f:
