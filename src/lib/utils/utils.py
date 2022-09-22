@@ -48,6 +48,7 @@ def get_model(args):
             model = models.wide_resnet50_2(pretrained=pretrained)
         elif args.model == 'mnasnet1_0':
             model = models.mnasnet1_0(pretrained=pretrained)
+        model.loss = eval(args.lossfun)
     else:
         raise ValueError('Unknown model name: {}'.format(args.model))
 
