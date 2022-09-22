@@ -194,11 +194,14 @@ class Tester(object):
             input, label = batch
             with torch.no_grad():
                 if phase == 'test':
-                    prediction, feat = model.inference(input.to(torch.device(self.device)))
-                    for f, l in zip(feat.to(torch.device('cpu')).detach(), label.detach()):
-                        np.save(os.path.join(self.save_dir, 'features',
+                    try:
+                        prediction, feat = model.inference(input.to(torch.device(self.device)))
+                        for f, l in zip(feat.to(torch.device('cpu')).detach(), label.detach()):
+                            np.save(os.path.join(self.save_dir, 'features',
                                              self.file_list[cnt][:self.file_list[cnt].rfind('.')]), f)
-                        cnt += 1
+                            cnt += 1
+                    except:
+                        prediction = model(input.to(torch.device(self.device)))
                 else:
                     prediction = model(input.to(torch.device(self.device)))
 
