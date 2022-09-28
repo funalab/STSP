@@ -63,6 +63,8 @@ def get_dataset(args):
         crop_size=eval(args.crop_size),
         crop_range=eval(args.crop_range),
         train=True,
+        convert_gray=eval(args.convert_gray),
+        pretrain=eval(args.pretrained),
     )
     validation_dataset = STDataset(
         root=args.root_path,
@@ -72,6 +74,8 @@ def get_dataset(args):
         crop_size=eval(args.crop_size),
         crop_range=eval(args.crop_range),
         train=False,
+        convert_gray=eval(args.convert_gray),
+        pretrain=eval(args.pretrained),
     )
 
     return train_dataset, validation_dataset
@@ -86,6 +90,7 @@ def get_test_dataset(args):
         crop_size=eval(args.crop_size),
         crop_range=eval(args.crop_range),
         train=False,
+        convert_gray=eval(args.convert_gray),
     )
 
     return test_dataset
