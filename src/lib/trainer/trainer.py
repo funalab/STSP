@@ -1,4 +1,5 @@
 import os
+import csv
 import json
 import time
 import numpy as np
@@ -226,14 +227,22 @@ class Tester(object):
     def evaluate(self, predict, truth, phase):
         """ Compute evaluation metrics for classification """
         y_trues, y_preds = [], []
-        for y_true, logit in zip(truth, predict):
-            y_true = y_true.cpu().numpy()
-            if len(logit[0]) == 1:
-                y_pred = [[np.array([1]) if torch.sigmoid(l).cpu() > 0.5 else np.array([0]) for l in logit]]
-            else: # Multi-class classification
-                y_pred = [[np.argmax(l).cpu().numpy() for l in logit]]
-            y_trues.append(y_true)
-            y_preds.append(y_pred)
+        cnt = 0
+        with open(os.path.join(self.save_dir,'predict_list.csv'), 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(['file_name', 'pred', 'label'])
+            for y_true, logit in zip(truth, predict):
+                y_true = y_true.cpu().numpy()
+                if len(logit[0]) == 1:
+                    y_pred = [[np.array([1]) if torch.sigmoid(l).cpu() > 0.5 else np.array([0]) for l in logit]]
+                else: # Multi-class classification
+                    y_pred = [[np.argmax(l).cpu().numpy() for l in logit]]
+                y_trues.append(y_true)
+                y_preds.append(y_pred)
+
+                writer.writerow([self.file_list[cnt], y_pred[0][0], y_true[0][0]])
+                cnt += 1
+            
         y_true = np.concatenate(y_trues, axis=0)
         y_pred = np.concatenate(y_preds, axis=0).reshape(len(y_true), 1)
 
