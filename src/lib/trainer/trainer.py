@@ -245,8 +245,10 @@ class Tester(object):
             y_preds.append(y_pred)
 
             if phase == 'test':
-                writer.writerow([self.file_list[cnt], y_pred[0][0], y_true[0][0]])
-                cnt += 1
+                with open(os.path.join(self.save_dir,'predict_list.csv'), 'a') as f:
+                    writer = csv.writer(f)
+                    writer.writerow([self.file_list[cnt], y_pred[0][0], y_true[0][0]])
+                    cnt += 1
             
         y_true = np.concatenate(y_trues, axis=0)
         y_pred = np.concatenate(y_preds, axis=0).reshape(len(y_true), 1)

@@ -91,6 +91,7 @@ def get_test_dataset(args):
         crop_range=eval(args.crop_range),
         train=False,
         convert_gray=eval(args.convert_gray),
+        pretrain=eval(args.pretrained),
     )
 
     return test_dataset
