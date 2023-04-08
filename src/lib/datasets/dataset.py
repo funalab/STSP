@@ -96,7 +96,9 @@ class STDataset(Dataset):
             basename='images',
             crop_size=[1024, 1024],
             crop_range=128,
-            train=True
+            train=True,
+            convert_gray=False,
+            pretrain=False,
     ):
         self.root = root
         self.basename = basename
@@ -107,12 +109,21 @@ class STDataset(Dataset):
             self.file_list = [line.rstrip() for line in f]
         with open(label_list, 'r') as f:
             self.label_list = [line.rstrip() for line in f]
+        self.convert_gray = convert_gray
+        self.pretrain = pretrain
 
     def __len__(self):
         return len(self.file_list)
 
     def get_image(self, i):
-        image = io.imread(os.path.join(self.root, self.basename, self.file_list[i])).transpose(2, 0, 1)
+        if self.convert_gray:
+            image = rgb2gray(io.imread(os.path.join(self.root, self.basename, self.file_list[i])))
+            if self.pretrain:
+                image = np.repeat(image[..., np.newaxis], 3, -1).transpose(2, 0, 1)
+            else:
+                image = np.expand_dims(image, axis=0)
+        else:
+            image = io.imread(os.path.join(self.root, self.basename, self.file_list[i])).transpose(2, 0, 1)
         image = crop_2d(image, crop_size=self.crop_size, crop_range=128, augmentation=self.train)
         image = min_max_normalize_one_image(image)
         return image
