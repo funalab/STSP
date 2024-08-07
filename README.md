@@ -1,4 +1,4 @@
-# Prediction of mouse seminiferous tubule stage
+# STSP: Seminiferous Tubule Stage Prediction
 
 This is the code for [Deep learning based automated prediction of mouse seminiferous tubule stage by using bright-field microscopy]().
 This project is carried out in [Funahashi Lab. at Keio University](https://fun.bio.keio.ac.jp/).
@@ -12,8 +12,8 @@ This project is carried out in [Funahashi Lab. at Keio University](https://fun.b
 ## Requirements
 
 - [Python 3.7.6+](https://www.python.org/downloads/)
-- [Pytorch 1.13.1](https://pytorch.org/)
-- [Torchvision 0.14.1](https://pytorch.org/vision/stable/index.html)
+- [Pytorch 1.9.0](https://pytorch.org/)
+- [Torchvision 0.10.0](https://pytorch.org/vision/stable/index.html)
 - [Matplotlib 3.5.3](https://matplotlib.org/)
 - [NumPy 1.21.6](http://www.numpy.org)
 - [scikit-image 0.16.1](http://scikit-image.org/)
@@ -25,11 +25,11 @@ See ```requirements.txt``` for details.
 
 1. Download this repository by `git clone`.
    ```sh
-   % git clone git@github.com:funalab/seminiferous_tubule_stage_classification.git
+   % git clone git@github.com:funalab/STSP.git
    ```
 2. Install requirements.
    ```sh
-   % cd seminiferous_tubule_stage_classification/
+   % cd STSP/
    % python -m venv venv
    % source ./venv/bin/activate
    % pip install --upgrade pip
@@ -39,16 +39,18 @@ See ```requirements.txt``` for details.
    - On Linux:
 
       ```sh
-      % wget -O models/ "XXX"
-      % wget -O seminiferous_tubule_dataset.tar.gz "XXX"
-      % tar zxvf seminiferous_tubule_dataset.tar.gz
+      % wget -O models.tar.gz "XXX"
+      % tar zxvf models.tar.gz
+      % wget -O datasets.tar.gz "XXX"
+      % tar zxvf datasets.tar.gz
       ```
 
    - on macOS:
      ```sh
-     % curl --output models/ "XXX"
-     % curl --output seminiferous_tubule_dataset.tar.gz "XXX"
-     % tar zxvf seminiferous_tubule_dataset.tar.gz
+     % curl --output models.tar.gz "XXX"
+     % tar zxvf models.tar.gz
+     % curl --output datasets.tar.gz "XXX"
+     % tar zxvf datasets.tar.gz
      ```
 6. Run the model.
     - On CPU:
