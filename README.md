@@ -11,7 +11,9 @@ This project is carried out in [Funahashi Lab. at Keio University](https://fun.b
 Our model performs to predict the stage from bright-field microscope images of mouse seminiferous tubules, in which there are 12 developmental stages.
 The maximum prediction accuracy of our model is 79.58%, which increases to 98.33% when a prediction error of ±1 stage is allowed.
 
+{: align="center"}
 ![overview](figs/overview.jpg)
+STSP Overview (adapted from Oakberg, E. F., American Journal of Anatomy, 1956)
 
 
 ## Requirements
