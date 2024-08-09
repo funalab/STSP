@@ -44,17 +44,17 @@ See ```requirements.txt``` for details.
    - On Linux:
 
       ```sh
-      % wget -O models.tar.gz "https://drive.google.com/file/d/1nht6tVhA4aCNeCQj2r9zk67J0cHeBpYe/view?usp=drive_link"
+      % wget -O models.tar.gz "https://drive.usercontent.google.com/download?id=1nht6tVhA4aCNeCQj2r9zk67J0cHeBpYe&confirm=xxx"
       % tar zxvf models.tar.gz
-      % wget -O datasets.tar.gz "https://drive.google.com/file/d/1XwMSSAH1xMW0vwHoEobP2iyjrn4eSNZa/view?usp=drive_link"
+      % wget -O datasets.tar.gz "https://drive.usercontent.google.com/download?id=1XwMSSAH1xMW0vwHoEobP2iyjrn4eSNZa&confirm=xxx"
       % tar zxvf datasets.tar.gz
       ```
 
    - on macOS:
      ```sh
-     % curl --output models.tar.gz "https://drive.google.com/file/d/1nht6tVhA4aCNeCQj2r9zk67J0cHeBpYe/view?usp=drive_link"
+     % curl --output models.tar.gz "https://drive.usercontent.google.com/download?id=1nht6tVhA4aCNeCQj2r9zk67J0cHeBpYe&confirm=xxx"
      % tar zxvf models.tar.gz
-     % curl --output datasets.tar.gz "https://drive.google.com/file/d/1XwMSSAH1xMW0vwHoEobP2iyjrn4eSNZa/view?usp=drive_link"
+     % curl --output datasets.tar.gz "https://drive.usercontent.google.com/download?id=1XwMSSAH1xMW0vwHoEobP2iyjrn4eSNZa&confirm=xxx"
      % tar zxvf datasets.tar.gz
      ```
 4. Run the model.
