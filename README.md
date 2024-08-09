@@ -62,9 +62,9 @@ See ```requirements.txt``` for details.
     The following command will run the test on the GPU (`device=cuda:0`).
     If you want to run on CPU, open `confs/test_resnet.cfg` and rewrite `device=cpu`.
     ```sh
-    % python src/tools/test.py --conf_file confs/test_resnet.cfg
+    % python -W ignore src/tools/test.py --conf_file confs/test_resnet.cfg
     ```
-    The above command is for ResNet, but if you want to run other models (ResNeXt, WideResNet, MobileNetV3), specify `confs/test_resnext.cfg`, `confs/test_wide_resnet.cfg`, ` confs/test_mobilenetv3.cfg`, respectively.
+    The above command is for ResNet, but if you want to run other models (ResNeXt, WideResNet, MobileNetV3), specify `confs/test_resnext.cfg`, `confs/test_wide_resnet.cfg`, `confs/test_mobilenetv3.cfg`, respectively.
 
 
 ## How to train and run model with your data
@@ -98,51 +98,51 @@ See ```requirements.txt``` for details.
     The following command will run the training with the settings in the config file specified by `--conf_file`.
 
     ```sh
-    % python src/tools/train.py --conf_file confs/train_resnet.cfg
+    % python -W ignore src/tools/train.py --conf_file confs/train_resnet.cfg
     ```
 
     We prepared the following options for training in the config file.
 
     ```
     [Dataset]
-    root_path                                   : Specify directory path for dataset contained train, validation, and test.
-    split_list_train                            : Specify the path of the split_list file for train.
-    split_list_validation                       : Specify the path of the split_list file for validation.
-    label_list                                  : Specify the path of the label_list file.
-    basename                                    : Specify directory name for images
-    crop_size                                   : Specify the (x, y) pixel size to crop from the image.
-    crop_range                                  : Specify the pixel range to crop from the center of the image.
-    convert_gray                                : If True, converts the input image to gray scale.
+    root_path                               : Specify directory path for dataset contained train, validation, and test.
+    split_list_train                        : Specify the path of the split_list file for train.
+    split_list_validation                   : Specify the path of the split_list file for validation.
+    label_list                              : Specify the path of the label_list file.
+    basename                                : Specify directory name for images
+    crop_size                               : Specify the (x, y) pixel size to crop from the image.
+    crop_range                              : Specify the pixel range to crop from the center of the image.
+    convert_gray                            : If True, converts the input image to gray scale.
     
     [Model]
-    model                                       : Specify model type {"resnet", "resnext50_32x4d", "wide_resnet50_2", "mobilenet_v3_large"}
-    init_classifier                             : Specify the path to the checkpoint file if you want to resume the training.
-    pretrained                                  : If True, the weights of the train model are used as the initial weights.
-    n_input_channels                            : Specify the number of input image channels.
-    n_classes                                   : Specify the number of classes of output.
-    lossfun                                     : Specify the loss function.
-    eval_metrics                                : Specify metrics for evaluation.
+    model                                   : Specify model type {"resnet", "resnext50_32x4d", "wide_resnet50_2", "mobilenet_v3_large"}
+    init_classifier                         : Specify the path to the checkpoint file if you want to resume the training.
+    pretrained                              : If True, the weights of the train model are used as the initial weights.
+    n_input_channels                        : Specify the number of input image channels.
+    n_classes                               : Specify the number of classes of output.
+    lossfun                                 : Specify the loss function.
+    eval_metrics                            : Specify metrics for evaluation.
     
     [Runtime]
-    save_dir                                     : Specify output files directory where model and log file will be stored.
-    batchsize                                    : Specify minibatch size for training.
-    val_batchsize                                : Specify minibatch size for validation.
-    epoch                                        : Specify the number of sweeps over the dataset to train.
-    optimizer                                    : Specify optimizer {Adam, SGD}.
-    lr                                           : Specify learning rate for optimizer.
-    momentum                                     : Specify momentum for optimizer.
-    weight_decay                                 : Specify weight decay used for the penalty of loss function.
-    device                                       : Specify `cuda:[GPU ID]` (or `cpu`).
-    seed                                         : Specify random seed.
-    phase                                        : Specify the phase {"train", "test"}
-    graph                                        : If True, the calculated graph used for training is drawn.
+    save_dir                                : Specify output files directory where model and log file will be stored.
+    batchsize                               : Specify minibatch size for training.
+    val_batchsize                           : Specify minibatch size for validation.
+    epoch                                   : Specify the number of sweeps over the dataset to train.
+    optimizer                               : Specify optimizer {Adam, SGD}.
+    lr                                      : Specify learning rate for optimizer.
+    momentum                                : Specify momentum for optimizer.
+    weight_decay                            : Specify weight decay used for the penalty of loss function.
+    device                                  : Specify `cuda:[GPU ID]` (or `cpu`).
+    seed                                    : Specify random seed.
+    phase                                   : Specify the phase {"train", "test"}
+    graph                                   : If True, the calculated graph used for training is drawn.
     ```
 
 3. Run model with the above-prepared dataset.
 
     Specify the path of `best_model.npz` in `results/` directory  generated by training in the option `init_classifier` of `confs/test_resnet.cfg`, and run the following command.
     ```sh
-    % python src/tools/test.py --conf_file confs/test_resnet.cfg
+    % python -W ignore src/tools/test.py --conf_file confs/test_resnet.cfg
     ```
 
 
