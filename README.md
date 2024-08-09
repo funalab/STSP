@@ -44,17 +44,17 @@ See ```requirements.txt``` for details.
    - On Linux:
 
       ```sh
-      % wget -O models.tar.gz "XXX"
+      % wget -O models.tar.gz "https://drive.google.com/file/d/1nht6tVhA4aCNeCQj2r9zk67J0cHeBpYe/view?usp=drive_link"
       % tar zxvf models.tar.gz
-      % wget -O datasets.tar.gz "XXX"
+      % wget -O datasets.tar.gz "https://drive.google.com/file/d/1XwMSSAH1xMW0vwHoEobP2iyjrn4eSNZa/view?usp=drive_link"
       % tar zxvf datasets.tar.gz
       ```
 
    - on macOS:
      ```sh
-     % curl --output models.tar.gz "XXX"
+     % curl --output models.tar.gz "https://drive.google.com/file/d/1nht6tVhA4aCNeCQj2r9zk67J0cHeBpYe/view?usp=drive_link"
      % tar zxvf models.tar.gz
-     % curl --output datasets.tar.gz "XXX"
+     % curl --output datasets.tar.gz "https://drive.google.com/file/d/1XwMSSAH1xMW0vwHoEobP2iyjrn4eSNZa/view?usp=drive_link"
      % tar zxvf datasets.tar.gz
      ```
 4. Run the model.
@@ -105,37 +105,37 @@ See ```requirements.txt``` for details.
 
     ```
     [Dataset]
-    root_path                                   : Specify directory path for dataset contained train, validation and test.
-    split_list_train
-    split_list_validation
-    label_list
+    root_path                                   : Specify directory path for dataset contained train, validation, and test.
+    split_list_train                            : Specify the path of the split_list file for train.
+    split_list_validation                       : Specify the path of the split_list file for validation.
+    label_list                                  : Specify the path of the label_list file.
     basename                                    : Specify directory name for images
-    crop_size
-    crop_range
-    convert_gray
+    crop_size                                   : Specify the (x, y) pixel size to crop from the image.
+    crop_range                                  : Specify the pixel range to crop from the center of the image.
+    convert_gray                                : If True, converts the input image to gray scale.
     
     [Model]
-    model
+    model                                       : Specify model type {"resnet", "resnext50_32x4d", "wide_resnet50_2", "mobilenet_v3_large"}
     init_classifier                             : Specify the path to the checkpoint file if you want to resume the training.
-    pretrained
-    n_input_channels
-    n_classes
-    lossfun
-    eval_metrics
+    pretrained                                  : If True, the weights of the train model are used as the initial weights.
+    n_input_channels                            : Specify the number of input image channels.
+    n_classes                                   : Specify the number of classes of output.
+    lossfun                                     : Specify the loss function.
+    eval_metrics                                : Specify metrics for evaluation.
     
     [Runtime]
     save_dir                                     : Specify output files directory where model and log file will be stored.
-    batchsize                                    : Specify minibatch size.
-    val_batchsize
+    batchsize                                    : Specify minibatch size for training.
+    val_batchsize                                : Specify minibatch size for validation.
     epoch                                        : Specify the number of sweeps over the dataset to train.
     optimizer                                    : Specify optimizer {Adam, SGD}.
-    lr                                           : Specify learning rate.
-    momentum
-    weight_decay
+    lr                                           : Specify learning rate for optimizer.
+    momentum                                     : Specify momentum for optimizer.
+    weight_decay                                 : Specify weight decay used for the penalty of loss function.
     device                                       : Specify `cuda:[GPU ID]` (or `cpu`).
     seed                                         : Specify random seed.
-    phase
-    graph
+    phase                                        : Specify the phase {"train", "test"}
+    graph                                        : If True, the calculated graph used for training is drawn.
     ```
 
 3. Run model with the above-prepared dataset.
