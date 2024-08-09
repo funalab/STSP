@@ -58,11 +58,12 @@ See ```requirements.txt``` for details.
      % tar zxvf datasets.tar.gz
      ```
 4. Run the model.
-  The following command will run the test on the GPU (device=0).
-  If you want to run on CPU, open `confs/test_resnet.cfg` and rewrite `device=cpu`.
-  ```sh
-  % python src/tools/test.py --conf_file confs/test_resnet.cfg
-  ```
+
+    The following command will run the test on the GPU (`device=cuda:0`).
+    If you want to run on CPU, open `confs/test_resnet.cfg` and rewrite `device=cpu`.
+    ```sh
+    % python src/tools/test.py --conf_file confs/test_resnet.cfg
+    ```
 
 
 ## How to train and run model with your data
