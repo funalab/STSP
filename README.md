@@ -1,12 +1,17 @@
 # STSP: Seminiferous Tubule Stage Prediction
 
-This is the code for [Deep learning based automated prediction of mouse seminiferous tubule stage by using bright-field microscopy]().
+[![biorXiv Paper](https://img.shields.io/badge/DOI-XXX-blue)]()
+
+This is the code for our paper [Deep learning based automated prediction of mouse seminiferous tubule stage by using bright-field microscopy](). 
 This project is carried out in [Funahashi Lab. at Keio University](https://fun.bio.keio.ac.jp/).
+
 
 ## Overview
 
+Our model performs to predict the stage from bright-field microscope images of mouse seminiferous tubules, in which there are 12 developmental stages.
+The maximum prediction accuracy of our model is 79.58%, which increases to 98.33% when a prediction error of ±1 stage is allowed.
 
-## Performance
+![overview](figs/overview.jpg)
 
 
 ## Requirements
@@ -35,7 +40,7 @@ See ```requirements.txt``` for details.
    % pip install --upgrade pip
    % pip install -r requirements.txt
    ```
-4. Download datasets and learned model.
+3. Download datasets and learned model.
    - On Linux:
 
       ```sh
@@ -52,19 +57,12 @@ See ```requirements.txt``` for details.
      % curl --output datasets.tar.gz "XXX"
      % tar zxvf datasets.tar.gz
      ```
-6. Run the model.
-    - On CPU:
-
-        ```sh
-
-        % python src/tools/test.py --conf_file confs/test_resnet.cfg
-        ```
-
-    - On CPU (Negative value of GPU ID indicates CPU)):
-
-        ```sh
-        % python src/tools/test.py
-        ```
+4. Run the model.
+The following command will run the test on the GPU (device=0).
+If you want to run on CPU, open `confs/test_resnet.cfg` and rewrite `device=cpu`.
+```sh
+% python src/tools/test.py --conf_file confs/test_resnet.cfg
+```
 
 
 ## How to train and run model with your data
