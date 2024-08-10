@@ -18,11 +18,16 @@ Note: This overview figure is adapted from figures in (Oakberg, E. F., American 
 ## Requirements
 
 - [Python 3.7.6+](https://www.python.org/downloads/)
-- [Pytorch 1.9.0](https://pytorch.org/)
-- [Torchvision 0.10.0](https://pytorch.org/vision/stable/index.html)
+- [Pytorch 1.9.0＋](https://pytorch.org/)
+- [Torchvision 0.10.0＋](https://pytorch.org/vision/stable/index.html)
 - [Matplotlib 3.5.3](https://matplotlib.org/)
-- [NumPy 1.21.6](http://www.numpy.org)
-- [scikit-image 0.16.1](http://scikit-image.org/)
+- [NumPy 1.21.6+](http://www.numpy.org)
+- [SciPy 1.7.3+](http://www.scipy.org)
+- [Pandas 1.3.5+](https://pandas.pydata.org/)
+- [scikit-image 0.16.1+](http://scikit-image.org/)
+- [scikit-learn 1.0.2+](http://scikit-learn.org/)
+- [pytz 2023.3+](https://pythonhosted.org/pytz/)
+- [tqdm 4.65.0+](https://tqdm.github.io/)
 
 See ```requirements.txt``` for details. 
 
@@ -148,5 +153,6 @@ See ```requirements.txt``` for details.
 
 
 ## Acknowledgements
-
+The authors thank the suggestions and discussions with Takahiro G. Yamada in Funahashi-lab, Keio University
+and Daisuke Mashiko in Research Institute for Microbial Diseases, Osaka University.
 This research was funded by JST CREST Grant Number JPMJCR21N1 to M.I. and A.F. The NVIDIA Tesla V100 was used in the miniRAIDEN computer server owned by RIKEN.
