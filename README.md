@@ -13,8 +13,8 @@ Our model performs to predict the stage from bright-field microscope images of m
 The maximum prediction accuracy of our model is 79.58%, which increases to 98.33% when a prediction error of ±1 stage is allowed.
 
 ![overview](figs/overview.jpg)
-Note: This overview figure is adapted from figures in (Oakberg, E. F., American Journal of Anatomy, 1956).
-
+Note: The conceptual image for the transition of seminiferous tubule stages included in this figure 
+is adapted from the figure included in (Oakberg, E. F., American Journal of Anatomy, 1956).
 
 ## Requirements
 
