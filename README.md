@@ -1,8 +1,11 @@
 # STSP: Seminiferous Tubule Stages Prediction
 
+<!-- 
 [![bioRxiv Paper](https://img.shields.io/badge/DOI-10.1101/2024.08.07.606973-blue)](https://doi.org/10.1101/2024.08.07.606973)
+-->
+[![SciRep Paper](https://img.shields.io/badge/DOI-10.1038/s41598--025--06727--x-blue)](https://doi.org/10.1038/s41598-025-06727-x)
 
-This is the code for our paper [Deep learning based automated prediction of mouse seminiferous tubule stage by using bright-field microscopy](https://doi.org/10.1101/2024.08.07.606973). 
+This is the code for our paper [Deep learning based automated prediction of mouse seminiferous tubule stage by using bright-field microscopy](https://www.nature.com/articles/s41598-025-06727-x). 
 This project is carried out in [Research Institute for Microbial Diseases at Osaka University](https://egr.biken.osaka-u.ac.jp/)
 and [Funahashi Lab. at Keio University](https://fun.bio.keio.ac.jp/).
 
